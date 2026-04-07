@@ -1,3 +1,0 @@
-[submodule "external/scene_generation"]
-	path = external/scene_generation
-	url = git@github.com:ostjul/scene-generation.git
