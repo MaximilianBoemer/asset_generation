@@ -24,8 +24,8 @@ def transform_gaussians(xyz, scales, rots, transform_mat, t_xyz, scaling_factor)
     # rots in ply are w,x,y,z -> scipy xyzw
     r_current = R.from_quat(np.column_stack([rots[:, 1], rots[:, 2], rots[:, 3], rots[:, 0]]))
     r_current_mats = r_current.as_matrix() # (N, 3, 3)
-    
-    # new_mats = transform_mat @ r_current_mats
+    if len(r_current_mats) > 0:
+        print(f"Applying orientation transform to {len(r_current_mats)} Gaussians...")
     new_mats = np.matmul(transform_mat, r_current_mats)
     
     # If the transformation is a reflection (det < 0), we fix the handedness
